@@ -3,6 +3,7 @@
 use App\Http\Controllers\NameController;
 use App\Http\Controllers\QuotaTaskController;
 use App\Http\Controllers\RegularTaskController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TrainingTaskController;
 use App\Http\Controllers\UnplannedTaskController;
@@ -24,9 +25,41 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/name', [nameController::class, 'store']);
-Route::post('/task', [TaskController::class, 'store']);
-Route::post('/quota-task', [QuotaTaskController::class, 'store']);
-Route::post('/regular-task', [RegularTaskController::class, 'store']);
-Route::post('/training-task', [TrainingTaskController::class, 'store']);
-Route::post('/unplanned-task', [UnplannedTaskController::class, 'store']);
+Route::controller(NameController::class)->group(function () {
+    Route::post('/name', 'store');
+    Route::put('/name/{id}', 'update');
+    Route::delete('/name/{id}', 'destroy');
+});
+
+Route::controller(TaskController::class)->group(function () {
+    Route::post('/task', 'store');
+    Route::put('/task/{id}', 'update');
+    Route::delete('/task/{id}', 'destroy');
+});
+
+
+Route::controller(QuotaTaskController::class)->group(function () {
+    Route::post('/quota-task', 'store');
+    Route::put('/quota-task/{id}', 'update');
+    Route::delete('/quota-task/{id}', 'destroy');
+});
+
+Route::controller(RegularTaskController::class)->group(function () {
+    Route::post('/regular-task', 'store');
+    Route::put('/regular-task/{id}', 'update');
+    Route::delete('/regular-task/{id}', 'destroy');
+});
+Route::controller(TrainingTaskController::class)->group(function () {
+    Route::post('/training-task', 'store');
+    Route::put('/training-task/{id}', 'update');
+    Route::delete('/training-task/{id}', 'destroy');
+});
+
+Route::controller(UnplannedTaskController::class)->group(function () {
+    Route::post('/unplanned-task', 'store');
+    Route::put('/unplanned-task/{id}', 'update');
+    Route::delete('/unplanned-task/{id}', 'destroy');
+});
+
+
+Route::get('/result', [ResultController::class, 'index']);
