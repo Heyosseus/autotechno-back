@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('regular_tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('regular_tasks');
-            $table->string('task_product');
-            $table->string('planned_time');
-            $table->string('factual_time');
-            $table->date('completion_date');
+            $table->string('regular_tasks')->nullable();
+            $table->string('task_product')->nullable();
+            $table->string('planned_time')->nullable();
+            $table->string('factual_time')->nullable();
+            $table->date('completion_date')->nullable();
             $table->timestamps();
         });
     }

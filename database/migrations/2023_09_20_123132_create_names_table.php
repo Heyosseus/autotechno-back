@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('names', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('dimension');
-            $table->string('quantity_of_last_week');
-            $table->string('quota_last_month');
-            $table->text('note');
+            $table->string('name')->nullable();
+            $table->string('dimension')->nullable();
+            $table->string('quantity_of_last_week')->nullable();
+            $table->string('quota_last_month')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

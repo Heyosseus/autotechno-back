@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('unplanned_tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('unplanned_tasks');
-            $table->string('task_product');
-            $table->string('factual_time');
-            $table->date('completion_date');
+            $table->string('unplanned_tasks')->nullable();
+            $table->string('task_product')->nullable();
+            $table->string('factual_time')->nullable();
+            $table->date('completion_date')->nullable();
             $table->timestamps();
         });
     }

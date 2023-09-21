@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('training_tasks');
             $table->string('task_product');
+            $table->string('planned_time');
             $table->string('factual_time');
             $table->date('completion_date');
             $table->timestamps();
